@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+       <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<img src="https://www.credit-conseil.ch/blog/wp-content/uploads/2012/01/scoring1-langues-GI.jpg">
+<body>
+ <div>
+	<h1> Crédit Scoring </h1>
+
+         <form action="{{ url_for('scoring_cust')}}" method="post">
+    	<input type="text" name="SK_ID_CURR" placeholder="Enter here" required="required" />
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict score</button>
+
+   <br>
+   <br>
+   <h1 style="font-size:2vw;"> {{ prediction_text}}</h1>
+
+   <br>
+
+ </div>
+
+
+</body>
+</html>
