@@ -5,13 +5,15 @@ from joblib import load
 import numpy as np
 
 
-model = load(r"mod.joblib")
+
 
 app = Flask(__name__)
 
-X_test = pd.read_csv(r"app_test.csv", index_col='SK_ID_CURR')
+model = load(r"C:\Users\piard\PycharmProjects\app_web\moddel.joblib")
 
-X_test_prepro = pd.read_csv(r"app_test_tr.csv", index_col='SK_ID_CURR')
+X_test = pd.read_csv(r"C:\Users\piard\PycharmProjects\app_web\app_test.csv", index_col='SK_ID_CURR')
+
+X_test_prepro = pd.read_csv(r"C:\Users\piard\PycharmProjects\app_web\app_test_tr.csv", index_col='SK_ID_CURR')
 
 
 @app.route("/")
@@ -41,7 +43,7 @@ def scoring_cust():
     prediction = np.where(score_cust >= 90, "Solvable", "Non Solvable")
 
     return render_template('index.html',
-                           prediction_text=f'Le score du client numéro {sk_id_cust} est de {round(score_cust,0)} , il est donc {prediction}.')
+    prediction_text=f'Le score du client numéro {sk_id_cust} est de {round(score_cust,0)} , il est donc {prediction}.')
 
 
 @app.route('/score/')
